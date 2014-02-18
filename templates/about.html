@@ -1,26 +1,41 @@
 <html>
 <head>
-<title>About</title>
-{% include 'page_meta.htmlt' %}
-<link rel='stylesheet' type='text/css' href='/static/{{ conf.style }}/index.css'>
-<style type='text/css'>
-.post_title {
-  margin-bottom: 6px;
-}
-</style>
-{% include 'analytics.htmlt' %}
+    <title>About</title>
+    {% include 'page_meta.htmlt' %}
+    <link rel='stylesheet' type='text/css' href='/static/{{ conf.style }}/index.css'>
+    <style type='text/css'>
+        .post_title {
+            margin-bottom: 6px;
+        }
+    </style>
+    {% include 'analytics.htmlt' %}
 </head>
 <div id='top'><h1>About</h1></div>
-<hr>
+
 <div style='vertical-align: middle; width: 800px; margin-left: auto; margin-right: auto;'>
-<p class='post_title'><a name='posts'>Posts in {{ conf.title }}</a></p>
-<div class='stdlnk'>Posts in {{ conf.title }} are licensed under a <a rel='license' href='http://creativecommons.org/licenses/by/3.0/'><img alt='Creative Commons License' style='border-width:0' src='http://i.creativecommons.org/l/by/3.0/88x31.png' /> Creative Commons Attribution 3.0 Unported License</a>.</div>
-<p class='post_title'><a name='comments'>Comments in {{ conf.title }}</a></p>
-<div class='stdlnk'>
-    You are welcome to leave comments on any posts here. On your first time posting a comment to {{ conf.title }}, the comment will await moderation.<br>
-Comments leaved here will be licensed under <a rel='license' href='http://creativecommons.org/licenses/by-nc-nd/3.0/'><img alt='Creative Commons License' style='border-width:0' src='http://i.creativecommons.org/l/by-nc-nd/3.0/88x31.png'/> Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License</a>.<br>
-Email information will be kept privately, and only used to find your Gravatar (which will be displayed besides your comment).<br>
-{{ conf.title }} will also record information like IP address, browser and OS type of each guest for analytics use and of course those will not be public.<br>
+    <p class='post_title'><a name='posts' style="color: #fff">Posts in {{ conf.title }}</a></p>
+
+    <div class='stdlnk'>
+        Posts in {{ conf.title }} are licensed under a
+        <img alt='Creative Commons License' style='border-width:0' src='http://i.creativecommons.org/l/by/3.0/88x31.png'/>
+        <a rel='license' href='http://creativecommons.org/licenses/by/3.0/' style="display: inline-block">
+            Creative Commons Attribution 3.0 Unported License
+        </a>.
+    </div>
+    <p class='post_title'><a name='comments' style="color: #fff">Comments in {{ conf.title }}</a></p>
+
+    <div class='stdlnk'>
+        You are welcome to leave comments on any posts here. On your first time posting a comment to {{ conf.title }},
+        the comment will await moderation.<br>
+        Comments leaved here will be licensed under
+        <img alt='Creative Commons License' style='border-width:0' src='http://i.creativecommons.org/l/by-nc-nd/3.0/88x31.png'/>
+        <a rel='license' href='http://creativecommons.org/licenses/by-nc-nd/3.0/' style="display: inline-block">
+            Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License</a>.
+        <br>
+        Email information will be kept privately, and only used to find your Gravatar (which will be displayed besides
+        your comment).<br>
+        {{ conf.title }} will also record information like IP address, browser and OS type of each guest for analytics
+        use and of course those will not be public.<br>
+    </div>
 </div>
-</div>
-{% include 'page_foot.htmlt' %}
+{% include 'page_foot.html' %}

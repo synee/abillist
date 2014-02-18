@@ -2,6 +2,7 @@ from google.appengine.ext import db
 
 import util
 
+
 class Comment(db.Model):
     author = db.StringProperty(multiline=False)
     email = db.StringProperty(multiline=False)
@@ -11,14 +12,18 @@ class Comment(db.Model):
     ipaddr = db.StringProperty(multiline=False)
     post_id = db.IntegerProperty()
 
+
 def count_pages():
     return util.count_pages(db.Query(Comment).count())
+
 
 def fetch(page=0, count=util.ITEMS_PER_PAGE):
     return db.Query(Comment).order('-date').fetch(count, count * page)
 
+
 def by_post_id(post_id):
     return db.Query(Comment).filter('post_id =', post_id).order('date')
+
 
 def _copy_comment(dest, src):
     dest.author = src.author
@@ -29,6 +34,7 @@ def _copy_comment(dest, src):
     dest.ipaddr = src.ipaddr
     dest.post_id = src.post_id
 
+
 def put(comment):
     tokens = db.Query(AllowedToken).filter('token =', comment.ctoken)
     if tokens.count() > 0:
@@ -37,9 +43,11 @@ def put(comment):
     comment.put()
     return False
 
+
 class AllowedToken(db.Model):
     token = db.StringProperty(multiline=False)
     last_update = db.DateTimeProperty(auto_now_add=True)
+
 
 class PendingComment(db.Model):
     author = db.StringProperty(multiline=False)

@@ -7,14 +7,14 @@
   padding-right: 2px;
   color: white;
   background-color: gray;
-  border-radius: 3px;
+  border-radius: 0px;
 }
 .paging span {
   padding: 5px;
   padding-left: 8px;
   padding-right: 8px;
   color: gray;
-  border-radius: 3px;
+  border-radius: 0px;
   border: solid 1px;
 }
 .paging a {
@@ -22,7 +22,7 @@
   padding-left: 8px;
   padding-right: 8px;
   color: #468;
-  border-radius: 3px;
+  border-radius: 0px;
   border: solid 2px;
   text-decoration: none;
   font-weight: bolder;

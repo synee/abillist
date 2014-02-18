@@ -4,17 +4,20 @@ from Cookie import BaseCookie
 import base
 from admin import model
 
+
 class UserView(base.BaseView):
     def usr_page(self, title, handler='', hint=''):
         self.put_page('templates/usr.html', {
-                'title': title,
-                'handler': handler,
-                'hint': hint,
-            })
+            'title': title,
+            'handler': handler,
+            'hint': hint,
+        })
+
 
 class Register(UserView):
     def get(self):
         self.usr_page('Register', 'newusr')
+
 
 class New(UserView):
     def post(self):
@@ -29,9 +32,11 @@ class New(UserView):
         self.redirect('/')
         update_cookie(self.response, usr.session_key)
 
+
 class LoginPage(UserView):
     def get(self):
         self.usr_page('Login', 'auth')
+
 
 class LoginAction(UserView):
     def post(self):
@@ -41,6 +46,7 @@ class LoginAction(UserView):
             return
         update_cookie(self.response, usr.session_key)
         self.redirect('/')
+
 
 def update_cookie(response, session_key):
     cookie = BaseCookie()

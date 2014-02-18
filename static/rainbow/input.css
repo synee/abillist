@@ -1,22 +1,22 @@
 textarea, input[type='text'] {
-  background-color: #eee;
+  /*background-color: #eee;*/
   color: #777;
   padding: 3px;
-  border-radius: 2px;
-  border: inset 1px;
+  border-radius: 0px;
+  border: 1px solid #333;
 }
 
 textarea:focus, input[type='text']:focus {
-  background-color: #e8e8e8;
+  /*background-color: #e8e8e8;*/
   color: #445;
 }
 
 button, input[type='submit'] {
-  background-color: #eee;
+  background-color: #fff;
   color: #666;
   padding: 3px;
-  border-radius: 2px;
-  border: outset 1px;
+  border-radius: 0px;
+  border: 1px solid #333;
 }
 
 button:hover, input[type='submit']:hover {

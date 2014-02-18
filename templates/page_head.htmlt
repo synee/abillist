@@ -1,5 +1,0 @@
-{% include 'admin_bar.htmlt' %}
-<div id='top'>
-<h1>{{ conf.title }}</h1>
-</div>
-<hr>

@@ -2,7 +2,7 @@ textarea, input[type='text'] {
   background-color: #222;
   color: #ccc;
   padding: 3px;
-  border-radius: 2px;
+  border-radius: 0px;
   border: solid 1px;
 }
 
@@ -15,7 +15,7 @@ button, input[type='submit'] {
   background-color: #222;
   color: #ccc;
   padding: 3px;
-  border-radius: 2px;
+  border-radius: 0px;
   border: solid 1px;
   text-decoration: underline;
 }

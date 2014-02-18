@@ -1,6 +1,7 @@
 from google.appengine.ext import db
 from google.appengine.api import memcache
 
+
 class User(db.Model):
     name = db.StringProperty(multiline=False)
     passwd = db.StringProperty(multiline=False)
@@ -30,6 +31,10 @@ class User(db.Model):
             return User.new('')
         return u[0]
 
+    def save(self):
+        db.put(self)
+
+
 class SiteConfiguration(db.Model):
     title = db.StringProperty(multiline=False)
     style = db.StringProperty(multiline=False)
@@ -44,7 +49,7 @@ class SiteConfiguration(db.Model):
         conf = SiteConfiguration.all()
         if conf.count() == 0:
             conf = SiteConfiguration()
-            conf.title = 'A NijiPress Site'
+            conf.title = 'Abillist Site'
             conf.style = 'midnight'
             conf.rss_uri = '/rss'
             conf.rss_description = ''
@@ -68,6 +73,7 @@ class SiteConfiguration(db.Model):
 
     def blogrolls(self):
         return Blogroll.load()
+
 
 class Blogroll(db.Model):
     uri = db.StringProperty(multiline=False)

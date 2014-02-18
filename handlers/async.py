@@ -3,14 +3,16 @@ import json
 import base
 import models.comment
 
+
 def comments_to_dicts(comments):
     return [{
-        'email_md5': c.email_md5,
-        'author': c.author,
-        'url': c.url,
-        'date': str(c.date),
-        'content': c.esc_content,
-    } for c in comments]
+                'email_md5': c.email_md5,
+                'author': c.author,
+                'url': c.url,
+                'date': str(c.date),
+                'content': c.esc_content,
+            } for c in comments]
+
 
 class CommentsLoader(base.BaseView):
     def post(self):
@@ -21,13 +23,16 @@ class CommentsLoader(base.BaseView):
         except ValueError:
             self.error(404)
 
+
 def comment_token(request):
     import time
     from hashlib import sha256
+
     token = request.get('token')
     if len(token) == 0:
         token = sha256(str(time.time())).hexdigest()
     return token
+
 
 class CommentRecv(base.BaseView):
     def post(self):
@@ -49,7 +54,7 @@ class CommentRecv(base.BaseView):
             comment.ipaddr = self.request.remote_addr
             comment.post_id = post_id
             if models.comment.put(comment):
-                return self.response.out.write(json.dumps({ 'result': 'ok' }))
+                return self.response.out.write(json.dumps({'result': 'ok'}))
             self.response.out.write(json.dumps({
                 'result': 'pending',
                 'token': comment.ctoken,

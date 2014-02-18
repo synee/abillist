@@ -3,6 +3,7 @@ import admin.model as admin
 import models
 import models.comment as comment
 
+
 class List(base.BaseView):
     def get(self):
         p = self.request_value('page', int)
@@ -16,12 +17,14 @@ class List(base.BaseView):
             'page_count': xrange(models.comment.count_pages()),
         })
 
+
 class Delete(base.BaseView):
     def post(self):
         usr = admin.User.get_by_session(self.request)
         if not usr.admin:
             return base.raise_forbidden(self)
         comment.Comment.get_by_id(int(self.request.get('id'))).delete()
+
 
 class ListPending(base.BaseView):
     def get(self):
@@ -34,12 +37,14 @@ class ListPending(base.BaseView):
             'clearall': True,
         })
 
+
 class Approve(base.BaseView):
     def post(self):
         usr = admin.User.get_by_session(self.request)
         if not usr.admin:
             return base.raise_forbidden(self)
         comment.PendingComment.get_by_id(int(self.request.get('id'))).approve()
+
 
 class ClearPending(base.BaseView):
     def get(self):

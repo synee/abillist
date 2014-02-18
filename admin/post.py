@@ -2,14 +2,16 @@ import base
 import models.post
 import admin.model as admin
 
+
 class NewPost(base.BaseView):
     def get(self):
         self.put_page('templates/new.html', {
-                'is_new': True,
-                'title': '',
-                'content': '',
-                'tags': '',
-            })
+            'is_new': True,
+            'title': '',
+            'content': '',
+            'tags': '',
+        })
+
 
 class Preview(base.BaseView):
     def post(self):
@@ -19,15 +21,16 @@ class Preview(base.BaseView):
         tags = self.request.get('tags')
         usr = admin.User.get_by_session(self.request)
         self.put_page('templates/preview.html', {
-                'id': ident,
-                'title': title,
-                'content': content,
-                'tags': tags,
-                'prepared_title': base.escape_title(title),
-                'prepared_content': base.escape_content(content),
-                'prepared_tags': [s.strip() for s in tags.split(',')],
-                'usr': usr,
-            })
+            'id': ident,
+            'title': title,
+            'content': content,
+            'tags': tags,
+            'prepared_title': base.escape_title(title),
+            'prepared_content': base.escape_content(content),
+            'prepared_tags': [s.strip() for s in tags.split(',')],
+            'usr': usr,
+        })
+
 
 class Add(base.BaseView):
     def post(self):
@@ -46,22 +49,24 @@ class Add(base.BaseView):
         models.post.put(p, [s.strip() for s in tags.split(',')])
         self.redirect('/?p=' + post_id)
 
+
 class List(base.BaseView):
     def get(self):
         p = self.request_value('page', int)
         self.put_page('templates/list_posts.html', {
-                'posts': base.posts_for_client(models.post.fetch(p)),
-                'current_page': p,
-                'page_count': xrange(models.post.count_pages()),
-            })
+            'posts': base.posts_for_client(models.post.fetch(p)),
+            'current_page': p,
+            'page_count': xrange(models.post.count_pages()),
+        })
+
 
 class Edit(base.BaseView):
     def get(self):
         post = models.post.by_id(self.request.get('id'))
         self.put_page('templates/new.html', {
-                'is_new': False,
-                'id': post.pid,
-                'title': post.title,
-                'content': post.content,
-                'tags': ', '.join(post.tags),
-            })
+            'is_new': False,
+            'id': post.pid,
+            'title': post.title,
+            'content': post.content,
+            'tags': ', '.join(post.tags),
+        })
